@@ -304,10 +304,10 @@ class LPT_OT_aligny(Operator):
     def execute(self, context):
         tslot = context.scene.transform_orientation_slots[0]
         if not tslot.use:
-            bpy.ops.transform.resize(value=(1, 0, 1), constraint_axis=(True, False, False), orient_type=   tslot.type,
+            bpy.ops.transform.resize(value=(1, 0, 1), constraint_axis=(False, True, False), orient_type=   tslot.type,
                                  mirror=False, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1)
         else :
-            bpy.ops.transform.resize(value=(1, 0, 1), constraint_axis=(True, False, False), orient_type='GLOBAL',orient_matrix_type='GLOBAL',
+            bpy.ops.transform.resize(value=(1, 0, 1), constraint_axis=(False, True, False), orient_type='GLOBAL',orient_matrix_type='GLOBAL',
                                  mirror=False, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1,
                                  orient_matrix=tslot.custom_orientation.matrix)
         return {"FINISHED"}
@@ -322,10 +322,10 @@ class LPT_OT_alignz(Operator):
     def execute(self, context):
         tslot = context.scene.transform_orientation_slots[0]
         if not tslot.use:
-            bpy.ops.transform.resize(value=(1, 1, 0), constraint_axis=(True, False, False), orient_type=   tslot.type,
+            bpy.ops.transform.resize(value=(1, 1, 0), constraint_axis=(False, False, True), orient_type=   tslot.type,
                                  mirror=False, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1)
         else :
-            bpy.ops.transform.resize(value=(1, 1, 0), constraint_axis=(True, False, False), orient_type='GLOBAL',orient_matrix_type='GLOBAL',
+            bpy.ops.transform.resize(value=(1, 1, 0), constraint_axis=(False, False, True), orient_type='GLOBAL',orient_matrix_type='GLOBAL',
                                  mirror=False, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1,
                                  orient_matrix=tslot.custom_orientation.matrix)
         return {"FINISHED"}
