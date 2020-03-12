@@ -107,6 +107,8 @@ translation_dict = {
         ("*", "Origin to Selection"): "原点を選択へ移動",
         ("*", "Origin to Center of Axis"): "原点を軸の中心に移動",
         ("*", "Set the object's origin"): "原点を再設定します",
+        ("Operator", "Add key bind for select mode"): "編集モードの選択切替キーを追加",
+        ("Operator", "Remove key bind for select mode"): "編集モードの選択切替キーを削除"
     }
 }
 
@@ -146,9 +148,9 @@ class LowpolyToolsPrefs(AddonPreferences):
         layout.label(text="Key bind:")
         col = layout.column()
         if len(addon_keymaps) == 0:
-            col.operator('toggle.key_bind',text ='Add key bind of select mode' )
+            col.operator('toggle.key_bind',text ='Add key bind for select mode' )
         else:
-            col.operator('toggle.key_bind',text ='Remove key bind of select mode' )
+            col.operator('toggle.key_bind',text ='Remove key bind for select mode' )
         #addon_keymaps
 
 
@@ -962,6 +964,8 @@ addon_keymaps = []
 # Registration
 #-----------------------------------
 classes = (
+    LowpolyTools_Properties,
+    LowpolyToolsPrefs,
     LPT_PT_LowpolyToolsEdit,
     LPT_PT_LowpolyToolsObject,
     LPT_OT_ToggleOcclude,
@@ -981,8 +985,6 @@ classes = (
     LPT_OT_alignx,
     LPT_OT_Wire_All,
     LPT_OT_LapRelax,
-    LowpolyTools_Properties,
-    LowpolyToolsPrefs,
     LPT_OT_Keybinding
 )
 def register():
@@ -994,10 +996,10 @@ def register():
     # Handle the keymap
     wm = bpy.context.window_manager
 
-    km = wm.keyconfigs.addon.keymaps.new(name="Mesh")
-    for idname, key in addon_idname:
-        kmi = km.keymap_items.new(idname, key, 'PRESS')
-        addon_keymaps.append((km, kmi))
+    #km = wm.keyconfigs.addon.keymaps.new(name="Mesh")
+    #for idname, key in addon_idname:
+    #    kmi = km.keymap_items.new(idname, key, 'PRESS')
+    #    addon_keymaps.append((km, kmi))
 
 
 def unregister():
