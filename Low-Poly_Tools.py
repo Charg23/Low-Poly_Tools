@@ -810,7 +810,8 @@ class LPT_PT_LowpolyToolsEdit(Panel):
             row.operator('mesh.fill_grid', icon='OUTLINER_OB_LATTICE')
 
             row = col.row(align=True)
-            row.operator('mesh.vertices_smooth', text="Smooth", icon='SPHERECURVE')
+            ope_prop = row.operator('mesh.vertices_smooth', text="Smooth", icon='SPHERECURVE')
+            ope_prop.factor = 0.5
             row.operator('mesh.laprelax', text="LapRelax", icon='SMOOTHCURVE')
 
             if addon_prefs.show_symmetry:
